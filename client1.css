@@ -1,0 +1,41 @@
+        .wrap {
+            width: 500px;
+            margin: 10px auto 10px auto;
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .headline {
+            width: 500px;
+            margin: 10px auto;
+            background-color: black;
+            color: yellow;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .Boxplot {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+
+
+        }
+
+        .input-box {
+            height: 40px;
+            text-align: center;
+        }
+
+        .order-box {
+            margin-bottom: 10px;
+        }
+        .Box_Words {
+            text-align: center;
+        }
+        .timeBox{
+        font-size: 16px;
+        font-family: Consolas, sans-serif;
+      }
