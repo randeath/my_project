@@ -9,8 +9,8 @@
         .headline {
             width: 500px;
             margin: 10px auto;
-            background-color: black;
-            color: yellow;
+            background-color: darkblue;
+            color: white;
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -20,8 +20,6 @@
             width: 100px;
             height: 40px;
             text-align: center;
-
-
         }
 
         .input-box {
