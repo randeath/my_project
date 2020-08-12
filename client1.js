@@ -25,35 +25,30 @@
         }
 
 
-        function order() {
-            let address = $("#O_address").val();
-            let phone = $("#O_phone").val();
-            let name = $("#O_name").val();
-            let count = $("#O_number").val();
-            if (address == "" || phone == "" || name == "" || count == "") {
+        function Reservation() {
+            let name = $("#studentName").val();
+            let grade = $("#studentGrade").val();
+            let address = $("#studentAddress").val();
+            let tel = $("#tlno").val();
+            let subject = $("#subjectSelect").val();
+            let time = $("#dateBox #timeBox").val();
+            // let specialNote = $("#specialNote").val();
+
+            if (name == "" || grade == "" || address == "" || tel == "" || subject == "" || time == "") {
                 alert('입력하지 않은 부분이 없는지 확인해 주세요! 정보가 부족합니다.');
             } else {
                 $.ajax({
                     type: "POST",
                     url: "/order",
-                    data: {'name_give': name, 'count_give': count, 'address_give': address, 'phone_give': phone},
+                    data: {'name_give': name, 'grade_give': grade, 'address_give': address, 'tel_give': tel, 'subject_give': subject, 'time_give': time},
                     success: function (response) {
                         if (response.result == 'success') {
-                            alert(response['msg']);
+                            console.log(name, grade, address, tel, subject, time );
+                            // alert(response['msg']);
                             window.location.reload();
                         }
                     }
                 })
 
-            }
-        }
-
-        function phoneNumber() {
-            var patt = new RegExp("[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}");
-            var res = patt.test($("#tlno").val());
-
-            if (!patt.test($("#tlno").val())) {
-                alert("전화번호를 정확히 입력하여 주십시오.");
-                window.location.reload();
             }
         }
