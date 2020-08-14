@@ -24,7 +24,7 @@
     <!--css-->
     <link rel="stylesheet" href="{{ url_for('static', filename='client1.css') }}">
     <!--js-->
-    <script href="{{ url_for('static', filename='client1.js') }}">
+    <script src="{{ url_for('static', filename='client1.js') }}">
     </script>
 
 </head>
@@ -77,12 +77,13 @@
                aria-describedby="inputGroup-sizing-default">
     </div>
 
-        <div class="input-group mb-3">
+    <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text Boxplot">휴대폰 번호*</label>
         </div>
 
-        <input type="tel" class="form-control input-box" id="tlno" name="tlno" aria-label="Default" title="전화번호를 입력하세요." placeholder="010-0000-0000"
+        <input type="tel" class="form-control input-box" id="tlno" name="tlno" aria-label="Default" title="전화번호를 입력하세요."
+               placeholder="010-0000-0000"
                aria-describedby="inputGroup-sizing-default" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
     </div>
 
@@ -113,21 +114,21 @@
         <input type="time" class="form-control timeMargin input-box" id="timeBox">
     </div>
 
-<!--    <div class="input-group mb-3">-->
-<!--        <div class="input-group-prepend Boxplot">-->
-<!--            <span class="input-group-text">특이사항</span>-->
-<!--        </div>-->
-<!--        <textarea class="form-control" id="specialNote"-->
-<!--                  cols="30"-->
-<!--                  rows="5" placeholder="140자까지 입력할 수 있습니다." onkeyup="validateLength(this)"></textarea>-->
-<!--    </div>-->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend Boxplot">
+            <span class="input-group-text">특이사항</span>
+        </div>
+        <textarea id="specialNote" class="form-control" cols="30" rows="5" placeholder="140자까지 입력할 수 있습니다."></textarea>
+    </div>
 
     <div><p class="notice">*내용들은 필수 입력 항목입니다.</p></div>
 
 
     <div class="order">
         <button onclick="Reservation()" type="button" class="btn btn-primary order-box">예약하기</button>
-        <button onclick="document.location.href='tel:010-9804-5625'" type="button" class="btn btn-primary order-box">전화하기</button>
+        <button onclick="document.location.href='tel:010-9804-5625'" type="button" class="btn btn-primary order-box">
+            전화하기
+        </button>
     </div>
 
     <div class="orders">
@@ -145,8 +146,6 @@
         </table>
     </div>
 </div>
-
-
 
 
 </body>

@@ -32,18 +32,18 @@
             let tel = $("#tlno").val();
             let subject = $("#subjectSelect").val();
             let time = $("#dateBox #timeBox").val();
-            // let specialNote = $("#specialNote").val();
+            let specialNote = $("#specialNote").val();
 
-            if (name == "" || grade == "" || address == "" || tel == "" || subject == "" || time == "") {
+            if (name == "" || grade == "" || address == "" || tel == "" || subject == "" || time == "" || specialNote == "") {
                 alert('입력하지 않은 부분이 없는지 확인해 주세요! 정보가 부족합니다.');
             } else {
                 $.ajax({
                     type: "POST",
                     url: "/order",
-                    data: {'name_give': name, 'grade_give': grade, 'address_give': address, 'tel_give': tel, 'subject_give': subject, 'time_give': time},
+                    data: {'name_give': name, 'grade_give': grade, 'address_give': address, 'tel_give': tel, 'subject_give': subject, 'time_give': time, 'specialNote_give': specialNote},
                     success: function (response) {
                         if (response.result == 'success') {
-                            console.log(name, grade, address, tel, subject, time );
+                            console.log(name, grade, address, tel, subject, time, specialNote );
                             // alert(response['msg']);
                             window.location.reload();
                         }

@@ -18,39 +18,52 @@ def client1():
     return render_template('client1.html')
 
 
+
 ## API 역할을 하는 부분
 @app.route('/push', methods=['POST'])
 def write_review():
-	# 1. 클라이언트가 준 title, author, review 가져오기.
-    title = request.form['title']
-    author = request.form['author']
-    review = request.form['review']
-    print("title", title)
-    print("author", author)
-    print("review", review)
+	# 1. 클라이언트가 준 studentName, studentGrade, studentAddress, tlno, subjectSelect, dateBox, timeBox, specialNote 가져오기.
+    studentName = request.form['name_give']
+    studentGrade = request.form['studentGrade']
+    studentAddress = request.form['studentAddress']
+    tlno = request.form['tlno']
+    dateBox = request.form['dateBox']
+    timeBox = request.form['timeBox']
+    specialNote = request.form['specialNote']
+    print("Name", studentName)
+    print("Grade", studentGrade)
+    print("Address", studentAddress)
+    print("tlno", tlno)
+    print("dateBox", dateBox)
+    print("timeBox", timeBox)
+    print("specialNote", specialNote)
+
 
 
 
 	# 2. DB에 정보 삽입하기
-    newReview = {
-        'title': title,
-        'author': author,
-        'review': review
+    newRes = {
+        'Name': studentName,
+        'Grade': studentGrade,
+        'Address': studentAddress,
+        'tlno': tlno,
+        'dateBox': dateBox,
+        'timeBox': timeBox,
     }
-    db.reviews.insert_one(newReview)
+    db.reservation.insert_one(newRes)
 
 	# 3. 성공 여부 & 성공 메시지 반환하기
     return jsonify({'result': 'success', 'msg': '이 요청은 POST!'})
 
 
-@app.route('/review', methods=['GET'])
-def read_reviews():
-    reviews = list(db.reviews.find({}, {'_id': 0}))
-    return jsonify({
-        'result': 'success',
-        'reviews': reviews
-    })
-    return jsonify({'result': 'success', 'msg': '이 요청은 GET!'})
+# @app.route('/review', methods=['GET'])
+# def read_reviews():
+#     reviews = list(db.reviews.find({}, {'_id': 0}))
+#     return jsonify({
+#         'result': 'success',
+#         'reviews': reviews
+#     })
+#     return jsonify({'result': 'success', 'msg': '이 요청은 GET!'})
 
 
 if __name__ == '__main__':
