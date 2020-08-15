@@ -7,50 +7,49 @@ client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑
 db = client.reservation  # 'dbsparta'라는 이름의 db를 만듭니다.
 
 
-## HTML을 주는 부분
-@app.route('/')
-def home():
-    return render_template('index.html')
+# ## HTML을 주는 부분
+# @app.route('/')
+# def home():
+#     return render_template('index.html')
 
 
 @app.route('/client1')
 def client1():
-    return render_template('client1.html')
+    return render_template('reservation.html')
 
 
 
 ## API 역할을 하는 부분
-@app.route('/push', methods=['POST'])
-def write_review():
-	# 1. 클라이언트가 준 studentName, studentGrade, studentAddress, tlno, subjectSelect, dateBox, timeBox, specialNote 가져오기.
-    studentName = request.form['name_give']
-    studentGrade = request.form['studentGrade']
-    studentAddress = request.form['studentAddress']
-    tlno = request.form['tlno']
-    dateBox = request.form['dateBox']
-    timeBox = request.form['timeBox']
-    specialNote = request.form['specialNote']
-    print("Name", studentName)
-    print("Grade", studentGrade)
-    print("Address", studentAddress)
+@app.route('/api/push', methods=['POST'])
+def save_res():
+    student_name = request.form['name_give']
+    student_grade = request.form['grade_give']
+    student_address = request.form['address_give']
+    tlno = request.form['tel_give']
+    date_box = request.form['date_give']
+    time_box = request.form['time_give']
+    special_note = request.form['specialNote_give']
+    print("Name", student_name)
+    print("Grade", student_grade)
+    print("Address", student_address)
     print("tlno", tlno)
-    print("dateBox", dateBox)
-    print("timeBox", timeBox)
-    print("specialNote", specialNote)
+    print("dateBox", date_box)
+    print("timeBox", time_box)
+    print("specialNote", special_note)
 
 
 
 
 	# 2. DB에 정보 삽입하기
-    newRes = {
-        'Name': studentName,
-        'Grade': studentGrade,
-        'Address': studentAddress,
+    res_info = {
+        'Name': student_name,
+        'Grade': student_grade,
+        'Address': student_address,
         'tlno': tlno,
-        'dateBox': dateBox,
-        'timeBox': timeBox,
+        'dateBox': date_box,
+        'timeBox': time_box,
     }
-    db.reservation.insert_one(newRes)
+    db.reservation.insert_one(res_info)
 
 	# 3. 성공 여부 & 성공 메시지 반환하기
     return jsonify({'result': 'success', 'msg': '이 요청은 POST!'})
@@ -67,4 +66,4 @@ def write_review():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
