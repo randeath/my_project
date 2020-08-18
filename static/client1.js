@@ -45,26 +45,28 @@ function advance_reservation() {
         url: "/api/push",
         data: {}, // 요청하면서 함께 줄 데이터 (GET 요청시엔 비워두세요)
         success: function (response) {
-            let res = response['reservaion'];
+            if (response.result != 'success') {
+                alert('정보를 가져오는데 실패');
+                return;
+            }
+            let reservation = response['reservation'];
             for (let i = 0; i < reservation.length; i++) {
-                let date = reservation[i]['date_give'];
-                let time = reservation[i]['time_give'];
-                let school = reservation[i]['school_give'];
-                let address = reservation[i]['address_give'];
-                let subject = reservation[i]['subject_give'];
+                let date = reservation[i]['Date'];
+                let time = reservation[i]['Time'];
+                let school = reservation[i]['School'];
+                let address = reservation[i]['Address'];
+                let subject = reservation[i]['Subject'];
 
-                let temp_html = `
-            <thead>
-            <tr>
-                <th scope="col">${date} ${time}</th>
-                <th scope="col">${school}</th>
-                <th scope="col">${address}</th>
-                <th scope="col">${subject}</th>
-            </tr>
-            </thead>`
-                $(`#res_box`).append(temp_html)
+                res_listing(date, time, school, address, subject);
+
+
+
             }
 
         }
     });
+}
+
+function res_listing(date, time, school, address, subject) {
+    console.log(date, time, school, address, subject)
 }

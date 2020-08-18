@@ -23,13 +23,17 @@ def client1():
 @app.route('/api/push', methods=['POST'])
 def save_res():
     student_name = request.form['name_give']
+    student_school = request.form['school_give']
     student_grade = request.form['grade_give']
     student_address = request.form['address_give']
+    studnet_subject = request.form['subject_give']
     tel = request.form['tel_give']
     date_box = request.form['date_give']
     time_box = request.form['time_give']
     special_note = request.form['specialNote_give']
     print("Name", student_name)
+    print("school", student_school)
+    print("Subject", studnet_subject)
     print("Grade", student_grade)
     print("Address", student_address)
     print("tel", tel)
@@ -40,11 +44,13 @@ def save_res():
 # 2. DB에 정보 삽입하기
     res_info = {
         'Name': student_name,
+        'School': student_school,
+        'Subject': studnet_subject,
         'Grade': student_grade,
         'Address': student_address,
         'Tel': tel,
-        'DateBox': date_box,
-        'TimeBox': time_box,
+        'Date': date_box,
+        'Time': time_box,
         'SpecialNote': special_note
     }
     db.reservation.insert_one(res_info)
@@ -54,11 +60,11 @@ def save_res():
 
 
 @app.route('/api/push', methods=['GET'])
-def advance_reservation():
-    reservation = list(db.reservation.find({}, {'_id': 0}))
+def read_orders():
+    reservations = list(db.reservation.find({}, {'_id': 0}))
     return jsonify({
         'result': 'success',
-        'reservation': reservation
+        'reservation': reservations
     })
     return jsonify({'result': 'success', 'msg': '이 요청은 GET!'})
 
