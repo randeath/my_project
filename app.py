@@ -61,10 +61,10 @@ def save_res():
 
 @app.route('/api/push', methods=['GET'])
 def read_orders():
-    reservations = list(db.reservation.find({}, {'_id': 0}))
+    reservation = list(db.reservation.find({}, {'_id': 0}))
     return jsonify({
         'result': 'success',
-        'reservation': reservations
+        'reservation': reservation
     })
     return jsonify({'result': 'success', 'msg': '이 요청은 GET!'})
 

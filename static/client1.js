@@ -1,3 +1,8 @@
+$(document).ready(function () {
+    res_list();
+});
+
+
 function Reservation() {
     let name = $("#studentName").val();
     let school = $("#School").val();
@@ -39,7 +44,7 @@ function Reservation() {
     }
 }
 
-function advance_reservation() {
+function res_list() {
     $.ajax({
         type: "GET", // GET 방식으로 요청한다.
         url: "/api/push",
@@ -54,12 +59,11 @@ function advance_reservation() {
                 let date = reservation[i]['Date'];
                 let time = reservation[i]['Time'];
                 let school = reservation[i]['School'];
-                let address = reservation[i]['Address'];
+                let grade = reservation[i]['Grade'];
                 let subject = reservation[i]['Subject'];
+                // console.log(date, time, school, address, subject);
 
-                res_listing(date, time, school, address, subject);
-
-
+                res_listing(date, time, school, grade, subject);
 
             }
 
@@ -67,6 +71,15 @@ function advance_reservation() {
     });
 }
 
-function res_listing(date, time, school, address, subject) {
-    console.log(date, time, school, address, subject)
+function res_listing(date, time, school, grade, subject) {
+    // console.log(date, time, school, address, subject)
+
+    let tempHtml = `
+            <tr>
+                <th scope="col">${date} / ${time}</th>
+                <th scope="col">${school}</th>
+                <th scope="col">${grade}</th>
+                <th scope="col">${subject}</th>
+            </tr>`
+    $('#res-box').append(tempHtml);
 }
