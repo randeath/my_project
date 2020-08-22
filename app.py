@@ -7,10 +7,10 @@ client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑
 db = client.reservation  # 'dbsparta'라는 이름의 db를 만듭니다.
 
 
-# ## HTML을 주는 부분
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
+## HTML을 주는 부분
+@app.route('/')
+def home():
+    return render_template('fullcalendar.html')
 
 
 @app.route('/client1')
