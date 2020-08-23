@@ -61,7 +61,7 @@ function res_list() {
                 let school = reservation[i]['School'];
                 let grade = reservation[i]['Grade'];
                 let subject = reservation[i]['Subject'];
-                // console.log(date, time, school, address, subject);
+                // console.log(date, time, school, grade, subject);
 
                 res_listing(date, time, school, grade, subject);
 
