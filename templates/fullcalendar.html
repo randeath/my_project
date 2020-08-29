@@ -22,6 +22,8 @@
     <script>
 
         $(document).ready(function () {
+
+            var date = new Date();
             /*  className colors
 
             className: default(transparent), important(red), chill(pink), success(green), info(blue)
@@ -31,7 +33,6 @@
 
             /* initialize the external events
             -----------------------------------------------------------------*/
-
 
 
             $.ajax({
@@ -44,20 +45,27 @@
                         let name = reservation[i]['Name'];
                         let date = reservation[i]['Date'];
                         let time = reservation[i]['Time'];
-                        listing_def(name, date, time);
+
+                        var dateD = date.getDate();
+                        var dateM = date.getMonth();
+                        var dateY = date.getFullYear();
+
+                        listing_def(name, dateD, dateM, dateY, time);
 
                     }
                 }
             });
 
 
-            function listing_def(name, date, time){
+            function listing_def(name, dateD, dateM, dateY, time) {
                 $('#calendar').fullCalendar('renderEvent', {
-                title: name + time,
-                start: date,
-                allDay: true
-              })
+
+                    title: name + "  " + time,
+                    start: new Date(dateY, dateM, dateD, time, 0),
+                    allDay: true
+                })
             }
+
             listing_def();
 
             $('#external-events div.external-event').each(function () {
@@ -153,7 +161,10 @@
                 },
 
 
-                events: [],
+                events: [
+
+
+                ],
             });
 
 

@@ -117,12 +117,33 @@
     <div class="input-group mb-3">
 
         <div class="input-group-prepend">
-            <label class="input-group-text Boxplot">예약된 날짜 / 시간*</label>
+            <label class="input-group-text Boxplot">예약 날짜*</label>
         </div>
         <input type="date" class="form-control timeMargin input-box" id="dateBox" name="trip-start"
                min="2020-08-10" max="2020-12-31">
 
-        <input type="time" class="form-control timeMargin input-box" id="timeBox" value="10:30">
+
+            <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text Boxplot">시간*</label>
+        </div>
+        <select class="custom-select input-box" id="timeBox">
+            <option selected class="Box_Words">상담시간을 선택해 주세요.</option>
+            <option value="10">오전 10시</option>
+            <option value="11">오전 11시</option>
+            <option value="12">오후 12시</option>
+            <option value="13">오후 1시</option>
+            <option value="14">오후 2시</option>
+            <option value="15">오후 3시</option>
+            <option value="16">오후 4시</option>
+            <option value="16">오후 5시</option>
+            <option value="16">오후 6시</option>
+            <option value="16">오후 7시</option>
+            <option value="16">오후 8시</option>
+            <option value="16">오후 9시</option>
+            <option value="16">오후 10시</option>
+        </select>
+    </div>
 
     </div>
 
